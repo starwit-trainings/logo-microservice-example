@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import List
 from datetime import datetime
+import pathlib
 
 import uvicorn
 from fastapi import FastAPI
@@ -22,6 +23,9 @@ data = [{"name": "starwit",
         {"name": "starwit-bw",
          "creator": "Markus",
          "imageUri": "resources/starwit-bw.png"}]
+
+# for Docker paths
+basepath = pathlib.Path(__file__).parent.resolve()
 
 @app.get('/info', response_model=None)
 def get_info() -> Info:
@@ -55,8 +59,9 @@ def get_logo_by_id(id: int) -> Logo:
 
 @app.get('/logo/image/{id}', response_model=bytes)
 def get_logo_image(id: int) -> bytes:
-    fr = FileResponse(data[id]['imageUri'])
+    imagePath = str(basepath) + "/" + data[id]['imageUri']
+    fr = FileResponse(imagePath)
     return fr
 
 if __name__ == '__main__':
-    uvicorn.run('main:app', host="127.0.0.1", port=8000)
+    uvicorn.run('main:app', host="0.0.0.0", port=8000)
