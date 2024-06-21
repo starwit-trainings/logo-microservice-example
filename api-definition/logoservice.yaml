@@ -1,0 +1,95 @@
+openapi: '3.0.2'
+info:
+  title: Logo service
+  version: '0.0.1'
+  description: |
+    This is a sample service, that provides logo images.
+
+servers:
+  - url: http://localhost:8080/v0
+
+paths:
+  /info:
+    get:
+      responses:
+        '200':
+          description: OK
+  /logo/all:
+    get:
+      description: get all logos
+      operationId: getAllLogos
+      responses:
+        '200':
+          description: list all logos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Logo'
+  /logo/{id}:
+    get:
+      description: get lgo by id 
+      operationId: getLogoById
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of logo
+      responses:
+        '200':
+          description: returns decisions by id
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Logo'
+  /logo/image/{id}:
+    get:
+      description: get logo image
+      operationId: getLogoImage
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of logo      
+      responses:
+        '200':
+          description: return logo image
+          content:
+              application/png:
+                schema: 
+                  type: string
+                  format: binary
+
+components:
+  schemas:
+    Info:
+      type: object
+      properties:
+        generation-date:
+          type: string
+          format: date-time
+        systemDescription:
+          type: string
+        apiVersion:
+          type: string
+    Logo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name: 
+          type: string
+        creator:
+          type: string
+          description: "logo creator"
+        imageUri:
+          type: string
+
+
