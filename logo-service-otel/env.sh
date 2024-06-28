@@ -1,0 +1,4 @@
+export OTEL_RESOURCE_ATTRIBUTES=logo-service
+export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:32771" 
+export OTEL_EXPORTER_OTLP_PROTOCOL=grpc 
+ 

@@ -21,3 +21,13 @@ Unsecured service can easily be run dockerized like so:
     sudo docker build . -t logoservice:latest
     sudo docker run -it --rm logoservice:latest
 ```
+
+## Open Telemetry
+
+```bash
+    docker run -it --rm -p 8000:8000 -e OTEL_EXPORTER_OTLP_ENDPOINT="http://host:port" -e OTEL_SERVICE_NAME=logo-service  logo-service-otel:latest
+```    
+
+## Secured API
+
+TODO

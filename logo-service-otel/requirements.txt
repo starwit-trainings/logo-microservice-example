@@ -1,0 +1,9 @@
+fastapi
+fastapi-code-generator
+
+opentelemetry-instrumentation-fastapi
+opentelemetry-distro
+opentelemetry-exporter-otlp
+
+uvicorn
+

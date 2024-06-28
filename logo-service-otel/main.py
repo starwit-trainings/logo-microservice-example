@@ -7,6 +7,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+
 from models import Logo
 from models import Info
 
@@ -16,6 +18,8 @@ app = FastAPI(
     description='This is a sample service, that provides logo images.\n',
     servers=[{'url': 'http://localhost:8080/v0'}],
 )
+
+FastAPIInstrumentor.instrument_app(app)
 
 data = [{"name": "starwit",
          "creator": "Markus",
