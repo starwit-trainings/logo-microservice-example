@@ -26,7 +26,9 @@ Unsecured service can easily be run dockerized like so:
 
 ```bash
     docker run -it --rm -p 8000:8000 -e OTEL_EXPORTER_OTLP_ENDPOINT="http://host:port" -e OTEL_SERVICE_NAME=logo-service  logo-service-otel:latest
-```    
+```
+
+Note, hostname resolution might not work (experienced so on Windows), so use your IP address. 
 
 ## Secured API
 
