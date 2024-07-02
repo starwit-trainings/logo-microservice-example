@@ -18,8 +18,8 @@ In repo's base folder run the following commands. If you want to run logo-servic
 Unsecured service can easily be run dockerized like so:
 ```bash
     cd logo-service
-    sudo docker build . -t logoservice:latest
-    sudo docker run -it --rm logoservice:latest
+    sudo docker build . -t logo-service:latest
+    sudo docker run -it --rm logo-service:latest
 ```
 
 ## Open Telemetry
