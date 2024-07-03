@@ -1,4 +1,6 @@
 fastapi
 fastapi-code-generator
 uvicorn
-jwt
+PyJWT
+cryptography
+bcrypt
