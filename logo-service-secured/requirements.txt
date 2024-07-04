@@ -4,3 +4,4 @@ uvicorn
 PyJWT
 cryptography
 bcrypt
+fastapi_keycloak_middleware
